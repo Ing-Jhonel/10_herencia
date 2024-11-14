@@ -36,7 +36,7 @@ class Automovil: public Vehiculo{
 		void subirPasajeros(int);
 		void bajarPasajeros(int);
 };
-void Automovil::Automovil(string n, string c, string m, double v, int cPuer, int cPasa):Automovil(n,c,m){
+Automovil::Automovil(string n, string c, string m, double v, int cPuer, int cPasa):Vehiculo(n,c,m,v){
 	cantPuertas=cPuer;
 	cantPasajeros=cPasa;
 }
@@ -44,15 +44,16 @@ void Automovil::mostrarAutomovil(){
 	mostrarDatos();
 	cout << "Es un automovil con " << cantPuertas << " puertas y " << cantPasajeros << " pasajeros." << endl;
 }
-void subirPasajeros(int cant){
+void Automovil::subirPasajeros(int cant){
 	cantPasajeros+=cant;
+	cout << "Se subieron " << cant << " pasajeros. Hay: " << cantPasajeros << " pasajeros totales." << endl;
 }
-void subirPasajeros(int cant){
+void Automovil::bajarPasajeros(int cant){
 	if(cantPasajeros<cant){
 		cout << "Solo hay " << cantPasajeros << " pasajeros, no puede bajar " << cant << " pasajeros." << endl;
 	} else {
 		cantPasajeros-=cant;
-		cout << "Se bajaron " << cant << " pasajeros. Quedan: " << cantPasajeros << " pasajeros." << endl;
+		cout << "Se bajaron " << cant << " pasajeros. Quedan: " << cantPasajeros << " pasajeros totales." << endl;
 	}
 }
 class Camion: public Vehiculo{
@@ -63,7 +64,7 @@ class Camion: public Vehiculo{
 		void mostrarCamion();
 		void cambiarCarga(string);
 };
-void Camion::Camion(string n, string c, string m, double v, string cg):Automovil(n,c,m){
+Camion::Camion(string n, string c, string m, double v, string cg):Vehiculo(n,c,m,v){
 	carga=cg;
 }
 void Camion::mostrarCamion(){
@@ -77,6 +78,17 @@ void Camion::cambiarCarga(string cg){
 
 int main(){
 	
+	Vehiculo v("A123", "Azul", "Hilux", 160);
+	v.mostrarDatos(); cout << endl;
 	
+	Automovil a("B321", "Rojo", "Toyota", 120, 4, 6);
+	a.mostrarAutomovil(); cout << endl;
+	a.subirPasajeros(2); cout << endl;
+	a.bajarPasajeros(9); cout << endl;
+	
+	Camion c("C453", "Amarillo", "CAT", 100, "Piedras Calizas");
+	c.mostrarCamion(); cout << endl;
+	c.cambiarCarga("Arena lisa"); cout << endl;
+	c.mostrarCamion(); cout << endl;
 	return 0;
 }
