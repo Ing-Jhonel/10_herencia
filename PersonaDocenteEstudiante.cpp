@@ -18,8 +18,7 @@ Persona::Persona(string n, string d, int e){
 }
 
 void Persona::mostrarDatos(){
-	cout << nombres << " tiene el DNI# " << DNI 
-	<< " y tiene " << edad << " anios de edad." << endl;
+	cout << nombres << " tiene el DNI# " << DNI << " y tiene " << edad << " anios de edad." << endl;
 }
 class Docente: public Persona{
 	private:
@@ -39,8 +38,7 @@ Docente::Docente(string n, string d, int e, int s, string es):Persona(n,d,e){
 
 void Docente::mostrarDocente(){
 	mostrarDatos();
-	cout << "\tes un docente con un sueldo de S/. " << sueldo
-		<< " y tiene la especialidad: " << especialidad << endl;
+	cout << "\tes un docente con un sueldo de S/. " << sueldo << " y tiene la especialidad: " << especialidad << endl;
 }
 
 class Estudiante: public Persona{
@@ -55,10 +53,10 @@ class Estudiante: public Persona{
 };
 
 Estudiante::Estudiante(string n, string d, int e, int no[], int nn, string c):Persona(n,d,e){
-	nNota=nn;
 	for(int i=0; i<nn; i++){
 		notas[i]=no[i];
 	}
+	nNota=nn;
 	codigo=c;
 }
 
